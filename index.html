@@ -18,7 +18,7 @@
     <link rel="preload" href="flowers-corner.png" as="image" />
     <link rel="preload" href="flowers-single.png" as="image" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Great+Vibes&family=Cinzel:wght@400;500;600;700&family=Cormorant+SC:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Great+Vibes&family=Cinzel:wght@400;500;600;700&family=Cormorant+SC:wght@300;400;500;600;700&family=Bad+Script&family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -869,6 +869,79 @@
         color: #8a7a5a;
         margin-top: 2px;
       }
+      .inv-venue-link {
+        display: inline-block;
+        margin-top: 8px;
+        font:
+          500 0.55rem/1 "Cinzel",
+          serif;
+        letter-spacing: 2px;
+        color: #3a5a28;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(58, 90, 40, 0.2);
+        padding-bottom: 1px;
+        transition: 0.3s;
+      }
+      .inv-venue-link:hover {
+        border-color: #3a5a28;
+      }
+      .inv-schedule {
+        margin-top: 20px;
+        padding: 20px;
+        background: #fffdf8;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(58, 90, 40, 0.08);
+      }
+      .schedule-items {
+        margin-top: 14px;
+      }
+      .schedule-item {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(58, 90, 40, 0.06);
+      }
+      .schedule-item:last-child {
+        border-bottom: none;
+      }
+      .schedule-time {
+        font:
+          600 clamp(0.82rem, 2.2vw, 0.95rem)/1 "Playfair Display",
+          serif;
+        color: #3a5a28;
+        flex-shrink: 0;
+        width: 50px;
+      }
+      .schedule-desc {
+        font:
+          400 clamp(0.8rem, 2.2vw, 0.92rem)/1.4 "Cormorant Garamond",
+          serif;
+        color: #5a5348;
+        flex: 1;
+      }
+      .schedule-note {
+        margin-top: 12px;
+        font:
+          italic 400 clamp(0.72rem, 1.8vw, 0.82rem)/1.5 "Cormorant Garamond",
+          serif;
+        color: #a8a090;
+        text-align: center;
+      }
+      .inv-afterparty {
+        margin-top: 20px;
+        padding: 20px;
+        background: #fffdf8;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(58, 90, 40, 0.08);
+        text-align: center;
+      }
+      .inv-afterparty .inv-detail-sub {
+        margin-top: 10px;
+        text-align: center;
+      }
       .inv-divider {
         width: 24px;
         height: 1px;
@@ -1052,6 +1125,14 @@
         color: #c8ac5a;
         margin-top: 5px;
       }
+      .b-reply {
+        font:
+          italic 400 clamp(0.75rem, 2vw, 0.9rem)/1.6 "Cormorant Garamond",
+          serif;
+        color: rgba(255, 255, 255, 0.35);
+        max-width: 300px;
+        margin: 0 auto;
+      }
       .b-back {
         margin-top: 28px;
         padding: 9px 24px;
@@ -1070,6 +1151,17 @@
       .b-back:hover {
         border-color: rgba(255, 255, 255, 0.18);
         color: rgba(255, 255, 255, 0.45);
+      }
+
+      /* Kazakh Cyrillic — Great Vibes doesn't support ә, ө, ұ etc. */
+      html[lang="kk"] .c-for {
+        font-family: "Bad Script", cursive;
+      }
+      html[lang="kk"] .greet-name {
+        font-family: "Bad Script", cursive;
+      }
+      html[lang="kk"] .b-date {
+        font-family: "Bad Script", cursive;
       }
 
       @media (max-width: 380px) {
@@ -1322,7 +1414,24 @@
             <div class="inv-detail-label" id="invPlaceLabel"></div>
             <div class="inv-detail-value" id="invPlaceVal"></div>
             <div class="inv-detail-sub" id="invPlaceSub"></div>
+            <a href="https://2gis.kz/kokshetau/geo/70000001095386479/70.199622,53.014890" target="_blank" class="inv-venue-link" id="invVenueLink"></a>
           </div>
+        </div>
+
+        <div class="inv-schedule" id="invSchedule">
+          <div class="inv-detail-label" id="scheduleLabel"></div>
+          <div class="schedule-items">
+            <div class="schedule-item"><span class="schedule-time">16:30</span><span class="schedule-desc" id="sch1"></span></div>
+            <div class="schedule-item"><span class="schedule-time">18:00</span><span class="schedule-desc" id="sch2"></span></div>
+            <div class="schedule-item"><span class="schedule-time">20:30</span><span class="schedule-desc" id="sch3"></span></div>
+            <div class="schedule-item"><span class="schedule-time">23:00</span><span class="schedule-desc" id="sch4"></span></div>
+          </div>
+          <div class="schedule-note" id="scheduleNote"></div>
+        </div>
+
+        <div class="inv-afterparty" id="invAfterparty">
+          <div class="inv-detail-label" id="afterpartyLabel"></div>
+          <div class="inv-detail-sub" id="afterpartyText"></div>
         </div>
       </div>
 
@@ -1382,6 +1491,8 @@
         <div class="b-div"></div>
         <div class="b-love" id="bl"></div>
         <div class="b-names">Dastan & Moldir</div>
+        <div class="b-div"></div>
+        <div class="b-reply" id="breply"></div>
         <button class="b-back" id="bb" onclick="resetEnvelope()"></button>
       </div>
     </div>
@@ -1461,8 +1572,17 @@
           invDateLabel: "Күні",
           invDateVal: "6 маусым 2026, сенбі",
           invPlaceLabel: "Орны",
-          invPlaceVal: "Бурабай (Боровое)",
-          invPlaceSub: "Табиғат аясында, тау мен көлдің арасында",
+          invPlaceVal: "Relax Borovoe, Бурабай",
+          invPlaceSub: "Таулар, орман және көлдер арасында",
+          invVenueLink: "2GIS-те ашу →",
+          scheduleLabel: "Күн тәртібі",
+          sch1: "Некелесу рәсімі",
+          sch2: "Мерекелік кешкі ас және бағдарлама",
+          sch3: "Бос уақыт",
+          sch4: "AfterParty",
+          scheduleNote: "* Кесте шамамен, өзгерістер болуы мүмкін",
+          afterpartyLabel: "Маңызды ақпарат",
+          afterpartyText: "Түнеуге мүмкіндік бар, бірақ барлығына орын жетпеуі мүмкін — бірақ бірдеңе ойлап табамыз. Барлық жігіттерді бір бөлмеге жатқызамыз 😄\n\nІс-шарада алкоголь болмайды. Кімге маңызды болса — afterparty-ге өзіңізбен ала келе аласыз.",
           psLabel: "Біздің тарихымыз",
           pcJapan:
             '"Almost 6 years." "You\'ve been together a long time." "It\'s not enough." - Rocky',
@@ -1481,6 +1601,7 @@
           bm: "Бұл күнді біз ұзақ армандадық. Ең жақын, ең қымбат адамдарымызбен бірге болғымыз келеді. Сіз - солардың бірісіз.",
           bl: "Мәңгі сүйіспеншілікпен,",
           bb: "← Конвертке оралу",
+          breply: "Жауабыңызды осы хабарламаға жеке хатта жаза аласыз",
         },
         ru: {
           d: "Дорогой гость",
@@ -1497,8 +1618,17 @@
           invDateLabel: "Дата",
           invDateVal: "6 июня 2026, суббота",
           invPlaceLabel: "Место",
-          invPlaceVal: "Бурабай (Боровое)",
-          invPlaceSub: "В объятиях природы, среди гор и озёр",
+          invPlaceVal: "Relax Borovoe, Бурабай",
+          invPlaceSub: "Среди гор, леса и озёр",
+          invVenueLink: "Открыть в 2GIS →",
+          scheduleLabel: "Расписание",
+          sch1: "Церемония",
+          sch2: "Праздничный ужин и программа",
+          sch3: "Свободное время",
+          sch4: "AfterParty",
+          scheduleNote: "* Расписание примерное, возможны изменения",
+          afterpartyLabel: "Важная информация",
+          afterpartyText: "Есть возможность переночевать, кто захочет может во время или после afterparty поспать, выезд в 12:00. \n\nАлкоголя на мероприятии не будет. Для кого важно — на afterparty можете взять с собой.",
           psLabel: "Наша история",
           pcJapan:
             '"Almost 6 years." "You\'ve been together a long time." "It\'s not enough." - Rocky',
@@ -1517,6 +1647,7 @@
           bm: "Мы давно мечтали об этом дне. Нам хочется провести его рядом с самыми близкими и дорогими людьми. Вы - один из них.",
           bl: "С любовью навсегда,",
           bb: "← Вернуться к конверту",
+          breply: "Ответ можете написать в личных сообщениях в ответе к данному сообщению",
         },
       };
 
@@ -1560,11 +1691,22 @@
         document.getElementById("invPlaceLabel").textContent = t.invPlaceLabel;
         document.getElementById("invPlaceVal").textContent = t.invPlaceVal;
         document.getElementById("invPlaceSub").textContent = t.invPlaceSub;
+        document.getElementById("invVenueLink").textContent = t.invVenueLink;
+        document.getElementById("scheduleLabel").textContent = t.scheduleLabel;
+        document.getElementById("sch1").textContent = t.sch1;
+        document.getElementById("sch2").textContent = t.sch2;
+        document.getElementById("sch3").textContent = t.sch3;
+        document.getElementById("sch4").textContent = t.sch4;
+        document.getElementById("scheduleNote").textContent = t.scheduleNote;
+        document.getElementById("afterpartyLabel").textContent = t.afterpartyLabel;
+        document.getElementById("afterpartyText").innerHTML = t.afterpartyText.replace(/\n/g, '<br>');
+        document.getElementById("invAfterparty").style.display = l === "kk" ? "none" : "";
         document.getElementById("bd").textContent = t.bd;
         document.getElementById("bv").textContent = t.bv;
         document.getElementById("bm").textContent = t.bm;
         document.getElementById("bl").textContent = t.bl;
         document.getElementById("bb").textContent = t.bb;
+        document.getElementById("breply").textContent = t.breply;
       }
 
       function introAnim() {
@@ -1798,7 +1940,8 @@
         });
       }
 
-      sl("ru");
+      const isKk = pK === "Құрметті" || pR === "Құрметті";
+      sl(isKk ? "kk" : "ru");
       window.addEventListener("DOMContentLoaded", introAnim);
     </script>
   </body>
